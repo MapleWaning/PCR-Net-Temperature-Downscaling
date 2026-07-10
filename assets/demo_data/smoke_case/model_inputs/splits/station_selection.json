@@ -1,0 +1,39 @@
+{
+  "selected_stations_in_output_order": [
+    "38734099999",
+    "36982099999",
+    "38413099999",
+    "38343099999"
+  ],
+  "smoke_samples": [
+    [
+      "38734099999",
+      "2023-07-20"
+    ],
+    [
+      "36982099999",
+      "2023-07-20"
+    ],
+    [
+      "38413099999",
+      "2011-11-10"
+    ],
+    [
+      "38343099999",
+      "2011-11-10"
+    ]
+  ],
+  "spatial_split_stations": {
+    "train": [
+      "38734099999",
+      "38413099999"
+    ],
+    "val": [
+      "36982099999"
+    ],
+    "test": [
+      "38343099999"
+    ]
+  },
+  "note": "This 4-sample dataset is for smoke IO tests; the 288-sample mini_case is managed by GitHub Releases."
+}

@@ -1,0 +1,1 @@
+split_strategy,split,sample_id,Station_ID,output_station_index,source_station_index,year,target_date,source_date,target_day_idx,source_day_idx,target_global_day_idx,source_global_day_idx,substituted

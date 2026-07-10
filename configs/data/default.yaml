@@ -1,0 +1,73 @@
+project:
+  name: central_asia_case
+  raw_root: ./raw
+  output_root: ./processed
+  temp_root: ./tmp
+
+station:
+  metadata_csv: ./processed/metadata/high-quality-meta.csv
+  history_csv: https://www.ncei.noaa.gov/pub/data/noaa/isd-history.csv
+  region:
+    lat_min: 34.0
+    lat_max: 49.0
+    lon_min: 60.0
+    lon_max: 96.0
+  coverage:
+    begin_before: 20080101
+    end_after: 20240101
+  quality:
+    max_missing_rate: 0.05
+
+time:
+  start_year: 2008
+  end_year: 2024
+  start_date: 2008-01-01
+  end_date: 2024-12-31
+
+grid:
+  target_res_m: 100
+  image_size: 128
+
+modules:
+  gsod: true
+  albedo: true
+  era5: true
+  lst: true
+  dem: true
+  cci: true
+
+gee:
+  project_id: tensile-nebula-478002-i6
+
+gsod:
+  max_workers: 8
+  gap_threshold_days: 5
+  download_dir: ./raw/gsod/station_data_merged
+
+albedo:
+  output_dir: ./processed/albedo
+  max_retries: 5
+
+era5:
+  output_dir: ./processed/era5
+  temp_dir: ./tmp/era5
+  download_times: ["00:00", "06:00", "12:00", "18:00"]
+
+lst:
+  output_dir: ./processed/lst
+  patch_csv: null
+  file_pattern: "{year}_Station_{station_id}.tif"
+
+dem:
+  raw_dir: ./raw/dem/cgiar_srtm
+  mosaic_path: ./raw/dem/full_region_dem.tif
+  output_dir: ./processed/dem
+  buffer_degree: 0.5
+
+cci:
+  output_dir: ./processed/cci
+  buffer_degree: 0.5
+
+manual_inputs:
+  cci_tif_dir: ./raw/cci/GLC_FCS30D_30m
+  lst_tif_dir: ./raw/lst/modis_exports

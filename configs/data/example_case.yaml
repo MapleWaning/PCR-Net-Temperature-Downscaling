@@ -1,0 +1,44 @@
+project:
+  name: central_asia_case
+  raw_root: E:/DataSet/raw
+  output_root: E:/DataSet/processed
+  temp_root: E:/DataSet/tmp
+
+station:
+  metadata_csv: E:/DataSet/processed/metadata/high-quality-meta.csv
+  history_csv: https://www.ncei.noaa.gov/pub/data/noaa/isd-history.csv
+  region:
+    lat_min: 34.0
+    lat_max: 49.0
+    lon_min: 60.0
+    lon_max: 96.0
+  coverage:
+    begin_before: 20080101
+    end_after: 20240101
+  quality:
+    max_missing_rate: 0.05
+
+time:
+  start_year: 2008
+  end_year: 2024
+  start_date: 2008-01-01
+  end_date: 2024-12-31
+
+grid:
+  target_res_m: 100
+  image_size: 128
+
+modules:
+  gsod: true
+  albedo: true
+  era5: true
+  lst: true
+  dem: true
+  cci: true
+
+gee:
+  project_id: tensile-nebula-478002-i6
+
+manual_inputs:
+  cci_tif_dir: E:/DataSet/raw/cci/GLC_FCS30D_30m
+  lst_tif_dir: E:/DataSet/raw/lst/modis_exports

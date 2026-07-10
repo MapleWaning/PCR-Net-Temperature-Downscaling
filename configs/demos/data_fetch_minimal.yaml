@@ -1,0 +1,27 @@
+project:
+  name: demo_minimal_data_fetch
+  raw_root: ../../outputs/demos/01_data_fetch/raw
+  output_root: ../../outputs/demos/01_data_fetch/processed/standard
+  temp_root: ../../outputs/demos/01_data_fetch/tmp
+
+station:
+  metadata_csv: ../../outputs/demos/01_data_fetch/processed/standard/metadata/high-quality-meta.csv
+  history_csv: https://www.ncei.noaa.gov/pub/data/noaa/isd-history.csv
+
+time:
+  start_year: 2020
+  end_year: 2020
+  start_date: 2020-01-01
+  end_date: 2020-01-02
+
+grid:
+  target_res_m: 100
+  image_size: 128
+
+modules:
+  gsod: true
+  albedo: false
+  era5: false
+  lst: false
+  dem: false
+  cci: false

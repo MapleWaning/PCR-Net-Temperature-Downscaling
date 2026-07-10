@@ -1,0 +1,2 @@
+split_strategy,split,sample_id,Station_ID,output_station_index,source_station_index,year,target_date,source_date,target_day_idx,source_day_idx,target_global_day_idx,source_global_day_idx,substituted
+spatial,test,38343099999_2011-11-10,38343099999,3,56,2011,2011-11-10,2011-11-10,313,313,1409,1409,False

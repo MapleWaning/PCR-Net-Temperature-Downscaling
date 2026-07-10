@@ -1,0 +1,3 @@
+split_strategy,split,sample_id,Station_ID,output_station_index,source_station_index,year,target_date,source_date,target_day_idx,source_day_idx,target_global_day_idx,source_global_day_idx,substituted
+temporal,train,38734099999_2023-07-20,38734099999,0,44,2023,2023-07-20,2023-07-20,200,200,5679,5679,False
+temporal,train,36982099999_2023-07-20,36982099999,1,75,2023,2023-07-20,2023-07-20,200,200,5679,5679,False

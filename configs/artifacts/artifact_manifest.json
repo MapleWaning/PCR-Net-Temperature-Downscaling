@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "release": {
+    "status": "published_prerelease",
+    "tag": "v0.1.0-demo",
+    "page_url": "https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.1.0-demo",
+    "url_template": "https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/download/{tag}/{asset_name}",
+    "note": "Pre-release artifacts for testing the PCR-Net repository workflows. Replace this tag with the official release tag when v1.0.0 is published."
+  },
+  "artifacts": {
+    "demo_data": {
+      "mini_case": {
+        "kind": "demo_dataset",
+        "version": "v0.1.0",
+        "release_asset_name": "pcrnet-mini-case-v0.1.0.tar.gz",
+        "download_path": "assets/demo_data/pcrnet-mini-case-v0.1.0.tar.gz",
+        "sha256": "77a9640366fe3bb43032164421344340f1cfa859c2204ac03c714b908192ca09",
+        "size_bytes": 384395043,
+        "install": {
+          "action": "extract_tar_gz",
+          "extract_to": "assets/demo_data",
+          "archive_top_level": "mini_case",
+          "runtime_path": "assets/demo_data/mini_case",
+          "remove_archive_after_extract": false
+        },
+        "required_after_install": [
+          "assets/demo_data/mini_case/manifest.json",
+          "assets/demo_data/mini_case/validation_summary.json",
+          "assets/demo_data/mini_case/model_inputs/static.npy",
+          "assets/demo_data/mini_case/model_inputs/truth.npy",
+          "assets/demo_data/mini_case/model_inputs/splits/all_selected_samples.csv",
+          "assets/demo_data/mini_case/model_inputs/splits/temporal_years.json",
+          "assets/demo_data/mini_case/standard/metadata/high-quality-meta.csv",
+          "assets/demo_data/mini_case/standard/era5",
+          "assets/demo_data/mini_case/standard/lst",
+          "assets/demo_data/mini_case/physical/t_base"
+        ]
+      }
+    },
+    "pretrained_weights": {
+      "pcr_time": {
+        "kind": "pcr_net_checkpoint",
+        "version": "v0.1.0",
+        "split_mode": "temporal",
+        "release_asset_name": "pcr-time-v0.1.0.pth",
+        "download_path": "assets/pretrained/pcr_net/pcr-time-v0.1.0.pth",
+        "sha256": "781eae46b207a9439a971e47c069bf7809bbe411a2b42b5c4cb5c6fca56c92fc",
+        "size_bytes": 105443235,
+        "install": {
+          "action": "rename",
+          "source_path": "assets/pretrained/pcr_net/pcr-time-v0.1.0.pth",
+          "target_path": "assets/pretrained/pcr_net/pcr-time.pth"
+        },
+        "runtime_path": "assets/pretrained/pcr_net/pcr-time.pth"
+      },
+      "pcr_spatial": {
+        "kind": "pcr_net_checkpoint",
+        "version": "v0.1.0",
+        "split_mode": "spatial",
+        "release_asset_name": "pcr-spatial-v0.1.0.pth",
+        "download_path": "assets/pretrained/pcr_net/pcr-spatial-v0.1.0.pth",
+        "sha256": "2b94ae043e1c110d2d44e95711a48ac17eec0a38565454a231212cffe8c1ada7",
+        "size_bytes": 105443235,
+        "install": {
+          "action": "rename",
+          "source_path": "assets/pretrained/pcr_net/pcr-spatial-v0.1.0.pth",
+          "target_path": "assets/pretrained/pcr_net/pcr-spatial.pth"
+        },
+        "runtime_path": "assets/pretrained/pcr_net/pcr-spatial.pth"
+      }
+    }
+  }
+}

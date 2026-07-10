@@ -1,0 +1,17 @@
+data_root: data/processed
+standard_root: data/processed/standard
+physical_root: data/processed/physical
+catboost_inference_root: data/processed/catboost_inference
+model_inputs_root: data/processed/model_inputs
+
+years:
+  train: [2008]
+  val: [2008]
+  test: [2008]
+
+training:
+  epochs: 1
+  batch_size: 1
+  num_workers: 0
+  input_channels: 20
+  output_channels: 3

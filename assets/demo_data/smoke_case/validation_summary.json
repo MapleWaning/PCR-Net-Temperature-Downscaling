@@ -1,0 +1,58 @@
+{
+  "metadata_rows": 4,
+  "sample_universe_count": 4,
+  "truth_shape": [
+    4,
+    6210,
+    3
+  ],
+  "static_station_count": 4,
+  "replacement_count": 0,
+  "h5_products": {
+    "era5": [
+      [
+        365,
+        4,
+        4,
+        128,
+        128
+      ]
+    ],
+    "lst": [
+      [
+        365,
+        4,
+        3,
+        128,
+        128
+      ]
+    ],
+    "tbase": [
+      [
+        365,
+        4,
+        4,
+        128,
+        128
+      ]
+    ],
+    "catboost_lst": [
+      [
+        365,
+        4,
+        3,
+        128,
+        128
+      ]
+    ],
+    "catboost_lst_spatial": [
+      [
+        365,
+        4,
+        3,
+        128,
+        128
+      ]
+    ]
+  }
+}

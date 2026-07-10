@@ -1,0 +1,42 @@
+project:
+  output_root: E:/DataSet/processed
+  raw_root: E:/DataSet/raw
+  temp_root: E:/DataSet/tmp
+
+metadata_csv: E:/DataSet/processed/metadata/high-quality-meta.csv
+
+inputs:
+  dem_elevation: E:/DataSet/processed/dem/dem_elevation.npy
+  era5_temp_dir: E:/DataSet/processed/era5
+
+physical_raw:
+  era5_surface_geopotential: E:/DataSet/raw/physical/era5_geopotential_static.nc
+  era5_pressure_monthly: E:/DataSet/raw/physical/era5_pressure_monthly.nc
+
+outputs:
+  factor_dir: E:/DataSet/processed/physical/factors
+  tbase_dir: E:/DataSet/processed/physical/t_base
+  report_dir: E:/DataSet/processed/reports
+
+time:
+  start_year: 2008
+  end_year: 2024
+  climatology_years: [2008, 2009, 2010, 2013, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2024]
+
+grid:
+  target_res_m: 100
+  image_size: 128
+
+era5_pressure:
+  pressure_levels: [500, 700, 850]
+  months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+physics:
+  gravity: 9.80665
+  basin_tpi_threshold_m: -15
+  basin_elevation_limit_m: 2500
+  tpi_window_size: 11
+  inversion_months: [12, 1, 2]
+  inversion_top_m: 900
+  gamma_inversion: 0.010
+  beta_radiation: 1.5

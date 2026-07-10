@@ -1,0 +1,32 @@
+{
+  "dataset": "smoke_case",
+  "sample_universe_count": 4,
+  "samples": [
+    [
+      "38734099999",
+      "2023-07-20"
+    ],
+    [
+      "36982099999",
+      "2023-07-20"
+    ],
+    [
+      "38413099999",
+      "2011-11-10"
+    ],
+    [
+      "38343099999",
+      "2011-11-10"
+    ]
+  ],
+  "years": [
+    2011,
+    2023
+  ],
+  "replacement_count": 0,
+  "layout_root": "E:\\pcr-net-temperature-downscaling\\assets\\demo_data\\smoke_case",
+  "release_policy": {
+    "smoke_case": "tracked in git",
+    "mini_case": "managed by GitHub Releases"
+  }
+}
