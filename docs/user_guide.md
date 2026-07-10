@@ -1,0 +1,87 @@
+# User Guide
+
+## Data Roots
+
+Prepared data follows this inner layout:
+
+```text
+<data-root>/
+  standard/
+  physical/
+  catboost_inference/
+  model_inputs/
+```
+
+The public prepared roots are:
+
+```text
+assets/demo_data/smoke_case/
+assets/demo_data/mini_case/
+outputs/demos/01_data_fetch/model_ready/
+```
+
+Full user-prepared data normally lives under `data/processed/`.
+
+## Main Inputs
+
+| Input | Path pattern | Format | Shape or fields | Notes |
+|---|---|---|---|---|
+| Metadata | `standard/metadata/high-quality-meta.csv` | CSV | `Station_ID`, station name, latitude, longitude, elevation, country | Row order defines station order. |
+| GSOD observations | `standard/gsod/weather_data.npy` | NumPy | Station x day x 3 | Mean, max, min daily temperature. |
+| ERA5 2 m temperature | `standard/era5/era5_t2m_YYYY.h5` | HDF5 key `data` | day x station x 4 x 128 x 128 | Four daily times in Celsius. |
+| LST | `standard/lst/lst_YYYY.h5` | HDF5 key `data` | day x station x 3 x 128 x 128 | Mean, max, min LST-derived channels after preprocessing. |
+| Physical base | `physical/t_base/t_base_advanced_YYYY.h5` | HDF5 key `data` | day x station x 4 x 128 x 128 | Advanced physical temperature baseline. |
+| CatBoost teacher maps | `catboost_inference/catboost_lst/cb_t2m_YYYY.h5` | HDF5 key `data` | day x station x 3 x 128 x 128 | PCR-Net teacher guidance maps. |
+| Static features | `model_inputs/static.npy` | pickled NumPy dictionary | DEM, land use, albedo per station | Consumed by neural datasets. |
+| Truth labels | `model_inputs/truth.npy` | NumPy | station x global day x 3 | Mean, max, min target temperatures. |
+| Split CSVs | `model_inputs/splits/*.csv` | CSV | sample and station metadata | Used by demos and model entry points. |
+
+Temperature channels are ordered as mean, maximum, and minimum unless a script explicitly states otherwise.
+
+## Main Outputs
+
+| Output | Typical path | Description |
+|---|---|---|
+| Demo summaries | `outputs/demos/<demo>/<case>/.../summary.json` | JSON status, commands, inputs, outputs, and errors. |
+| CatBoost features | `outputs/demos/02_train_and_test/<case>/<split>/parquet/` | Parquet feature tables. |
+| CatBoost models | `outputs/demos/02_train_and_test/<case>/<split>/catboost/` | LST teacher model. |
+| Teacher maps | `catboost_inference/catboost_lst/cb_t2m_YYYY.h5` | Sample-limited teacher-map HDF5 outputs. |
+| PCR-Net checkpoints | `outputs/demos/02_train_and_test/<case>/<split>/runs/*/best_model.pth` | Demo training checkpoints. |
+| Metrics | `outputs/demos/*/*.csv` | Evaluation metrics or benchmark tables. |
+| Figures | `outputs/demos/03_visualization/<case>/<split>/maps/` | Visualization PNG files. |
+| Benchmark CSV | `outputs/demos/06_compute_profile/<case>/complexity_results.csv` | FLOPs, parameter, size, and peak-memory table. |
+
+## Demo CLI Options
+
+Shared options for Demos 2-5:
+
+- `--dataset smoke_case|mini_case`
+- `--data-root <path>`
+- `--split-mode auto|temporal|spatial`
+- `--version auto|time|temporal|spatial`
+
+Demo-specific options:
+
+- Demo 1: `--proxy`
+- Demo 2: `--smoke-only`
+- Demo 3: `--model-path`, `--execute`
+- Demo 4: `--smoke-only`
+- Demo 5: `--smoke-only`
+- Demo 6: `--dataset`, `--data-root`, `--num-samples`, `--diffusion-steps`, `--diffusion-base-channels`, `--diffusion-channel-mults`, `--diffusion-num-res-blocks`, `--diffusion-dropout`, `--num-train-timesteps`, `--beta-start`, `--beta-end`, `--macs-to-flops-factor`, `--amp-memory`, `--seed`, `--device`
+
+## Artifact Behavior
+
+When `--dataset mini_case` is requested, demos use the Release downloader if `assets/demo_data/mini_case/` is missing. If the mini-case download or install fails, the demo falls back to `smoke_case` when possible. If neither prepared dataset exists, model demos can use Demo 1 output at `outputs/demos/01_data_fetch/model_ready/`.
+
+Pretrained checkpoints are downloaded by Demo 3 when no explicit `--model-path` is provided.
+
+## Expected Errors
+
+- Missing dataset: download `mini_case` or run Demo 1 for fallback data.
+- Missing checkpoint: download `pcr_time` or `pcr_spatial`, or pass `--model-path`.
+- SHA256 mismatch: delete the affected local artifact and rerun the downloader.
+- Incomplete HDF5 files: regenerate the source demo or data product.
+- CUDA unavailable: run on CPU or install a CUDA-compatible PyTorch build.
+- CUDA out of memory: reduce batch size or use CPU for small checks.
+- Too few CatBoost samples: use `mini_case` or a larger prepared dataset.
+- Incompatible checkpoint keys: use checkpoints matching the repository model definitions.

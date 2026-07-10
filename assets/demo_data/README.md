@@ -1,8 +1,54 @@
 # Prepared Demo Data
 
-This directory stores lightweight prepared demo datasets.
+This directory stores model-ready demo datasets. It is not a replacement for
+the complete research dataset.
 
-- `smoke_case/`: a four-sample dataset committed with the repository for fast smoke tests.
-- `mini_case/`: a 288-sample dataset with temporal and spatial split views. This dataset is managed through GitHub Releases rather than Git.
+## Datasets
 
-Both datasets keep the same inner layout as `data/processed` so demos can switch between them with `--dataset smoke_case` or `--dataset mini_case`.
+| Dataset | Source | Purpose | Notes |
+|---|---|---|---|
+| `smoke_case/` | Tracked in Git | Fast interface checks | Four samples only. |
+| `mini_case/` | GitHub Release artifact | Public demo workflow validation | Reduced 288-sample real subset. |
+
+Both datasets keep the same inner layout as a prepared `data/processed` tree so
+demos can switch between them with `--dataset smoke_case` or
+`--dataset mini_case`.
+
+## Download
+
+Install the Release-managed mini-case with:
+
+```bash
+python scripts/download_release_artifact.py mini_case
+```
+
+The downloader verifies size and SHA256 values from
+`configs/artifacts/artifact_manifest.json`.
+
+## Expected Layout
+
+```text
+assets/demo_data/
+  smoke_case/
+    manifest.json
+    validation_summary.json
+    standard/
+    physical/
+    catboost_inference/
+    model_inputs/
+  mini_case/
+    manifest.json
+    validation_summary.json
+    standard/
+    physical/
+    catboost_inference/
+    model_inputs/
+```
+
+The `mini_case` archive itself may also remain in this directory after download.
+It is ignored by Git.
+
+## Reproducibility Scope
+
+`smoke_case` and `mini_case` are for software and workflow validation. Metrics
+computed from these datasets are not manuscript metrics.

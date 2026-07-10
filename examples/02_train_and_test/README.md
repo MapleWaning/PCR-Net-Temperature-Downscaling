@@ -1,30 +1,80 @@
-# Demo 02: Model Training and Testing
+# Demo 02: CatBoost Teacher and PCR-Net Training/Testing
 
-This demo runs the model-side dependency chain on a prepared demo dataset:
+## Purpose
 
-1. Build LST CatBoost parquet features from the physical base and LST inputs.
-2. Train the LST CatBoost residual model.
-3. Run sample-limited CatBoost spatial inference to write `catboost_inference/catboost_lst/cb_t2m_YYYY.h5`.
-4. Train PCR-Net with that CatBoost guidance.
-5. Evaluate the PCR-Net checkpoint.
+Run the main model-side workflow on a prepared demo dataset.
 
-```bash
-python examples/02_train_and_test/run_demo.py
-```
+## What This Demo Does
 
-The default dataset is `assets/demo_data/smoke_case`. Use the Release-managed 288-sample dataset with:
+1. Builds LST CatBoost parquet features.
+2. Trains the LST CatBoost residual model.
+3. Runs sample-limited CatBoost inference to write teacher maps.
+4. Trains PCR-Net with CatBoost guidance.
+5. Evaluates the produced PCR-Net checkpoint.
+
+## What This Demo Does Not Do
+
+It does not run full manuscript training schedules. Mini-case metrics are workflow-validation results and are not expected to match the manuscript metrics.
+
+## Requirements
+
+Model dependencies: PyTorch, TorchVision, CatBoost, PyArrow, pandas, h5py, and scikit-learn.
+
+## Input Data
+
+Default: `assets/demo_data/smoke_case/`.
+
+Recommended public dataset: `assets/demo_data/mini_case/`.
+
+Fallback: `outputs/demos/01_data_fetch/model_ready/` when prepared datasets are unavailable.
+
+## Main Command
 
 ```bash
 python examples/02_train_and_test/run_demo.py --dataset mini_case
 ```
 
-`--split-mode auto` uses spatial split for `smoke_case` and temporal split for `mini_case`. The CatBoost guidance used by PCR-Net is produced by this demo, not pre-generated.
+## Important CLI Options
 
-If both `smoke_case` and `mini_case` are unavailable, Demo 02 falls back to Demo 01 output at `outputs/demos/01_data_fetch/model_ready/`. Run Demo 01 first to create that fallback data.
+- `--dataset smoke_case|mini_case`
+- `--data-root <prepared-data-root>`
+- `--version time|spatial`
+- `--split-mode temporal|spatial`
+- `--smoke-only`
 
-Temporal/spatial versions can be selected explicitly:
+## Processing Steps
 
-```bash
-python examples/02_train_and_test/run_demo.py --dataset mini_case --version time
-python examples/02_train_and_test/run_demo.py --dataset mini_case --version spatial
+The demo writes features, CatBoost models, teacher maps, PCR-Net runs, metrics, and a summary under:
+
+```text
+outputs/demos/02_train_and_test/<case>/<split>/
 ```
+
+## Expected Outputs
+
+```text
+summary.json
+parquet/catboost_lst/<split>/*.parquet
+catboost/catboost_lst.cbm
+catboost_inference/catboost_lst/cb_t2m_YYYY.h5
+runs/*/best_model.pth
+metrics.csv
+```
+
+For Demo 1 fallback data, CatBoost teacher maps may be written into the fallback data root.
+
+## Runtime and Hardware
+
+GPU is recommended for PCR-Net training, but the demo uses reduced epochs and small batches. No runtime estimate is documented.
+
+## Relationship to the Manuscript
+
+This is the closest public demo to the main PCR-Net workflow. Full manuscript metrics require the complete research dataset and full settings.
+
+## Limitations
+
+The demo uses reduced training parameters. It may reuse or overwrite files in its output directory.
+
+## Troubleshooting
+
+If CatBoost has too few samples, use `--dataset mini_case`. If GPU memory is limited, keep the demo batch-size defaults or run on CPU.

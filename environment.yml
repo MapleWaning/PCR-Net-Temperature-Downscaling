@@ -1,0 +1,32 @@
+name: pcrnet
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python>=3.10
+  - pip
+  - numpy
+  - pandas
+  - h5py
+  - pyyaml
+  - requests
+  - scipy
+  - tqdm
+  - matplotlib
+  - scikit-learn
+  - joblib
+  - pyarrow
+  - pytorch=2.10.0
+  - torchvision
+  - rasterio
+  - gdal
+  - pyproj
+  - shapely
+  - xarray
+  - pip:
+      - catboost
+      - cdsapi
+      - earthengine-api
+      - geemap
+      - thop

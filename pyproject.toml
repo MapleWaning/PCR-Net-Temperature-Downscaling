@@ -35,6 +35,7 @@ model = [
   "matplotlib",
   "pyarrow",
   "scikit-learn",
+  "thop",
   "torch",
   "torchvision",
 ]
@@ -55,6 +56,7 @@ all = [
   "matplotlib",
   "pyarrow",
   "scikit-learn",
+  "thop",
   "torch",
   "torchvision",
   "pytest",

@@ -1,36 +1,71 @@
 # Demo 05: Baseline Training and Testing
 
-This demo runs the baseline model workflow on a prepared demo dataset. The default dataset is `assets/demo_data/smoke_case`.
+## Purpose
 
-It trains and tests:
+Run baseline model workflows on a prepared demo dataset.
 
-- Random Forest baseline.
-- CatBoost baseline without LST.
-- Basic U-Net baseline with MSE loss.
+## What This Demo Does
 
-All baseline inputs use the raw ERA5-style HDF5 input:
+It trains/tests:
+
+- Random Forest without LST.
+- CatBoost without LST.
+- Basic U-Net with MSE loss.
+
+## What This Demo Does Not Do
+
+It does not use LST or CatBoost teacher maps. It does not implement every possible manuscript baseline if a baseline is not listed above.
+
+## Requirements
+
+PyTorch, TorchVision, CatBoost, scikit-learn, joblib, PyArrow, pandas, and h5py.
+
+## Input Data
+
+Baseline inputs use ERA5-style HDF5 files:
 
 ```text
 assets/demo_data/<case>/standard/era5/era5_t2m_YYYY.h5
 ```
 
-This demo does not use LST and does not use `cb_t2m_YYYY.h5`.
-
-```bash
-python examples/05_baseline_training_and_test/run_demo.py
-```
-
-Use the Release-managed 288-sample dataset with:
+## Main Command
 
 ```bash
 python examples/05_baseline_training_and_test/run_demo.py --dataset mini_case
 ```
 
-Temporal/spatial versions can be selected explicitly:
+## Important CLI Options
 
-```bash
-python examples/05_baseline_training_and_test/run_demo.py --dataset mini_case --version time
-python examples/05_baseline_training_and_test/run_demo.py --dataset mini_case --version spatial
+- `--dataset smoke_case|mini_case`
+- `--version time|spatial`
+- `--data-root <prepared-data-root>`
+- `--smoke-only`
+
+## Processing Steps
+
+The demo builds no-LST feature tables, trains RF and CatBoost baselines, trains Basic U-Net, and evaluates the Basic U-Net checkpoint.
+
+## Expected Outputs
+
+```text
+outputs/demos/05_baseline_training_and_test/<case>/<split>/summary.json
+outputs/demos/05_baseline_training_and_test/<case>/<split>/models/
+outputs/demos/05_baseline_training_and_test/<case>/<split>/runs/
+outputs/demos/05_baseline_training_and_test/<case>/<split>/baseline_unet_metrics.csv
 ```
 
-If both `smoke_case` and `mini_case` are unavailable, Demo 05 falls back to Demo 01 output at `outputs/demos/01_data_fetch/model_ready/`.
+## Runtime and Hardware
+
+GPU is recommended for U-Net training. RF and CatBoost demo commands use reduced settings. No runtime estimate is documented.
+
+## Relationship to the Manuscript
+
+The demo checks baseline code paths. Manuscript baseline metrics require the full research dataset and full settings.
+
+## Limitations
+
+Fairness conditions in the demo are reduced for quick workflow validation. Baselines do not use teacher maps.
+
+## Troubleshooting
+
+If RF or CatBoost training has too few samples, use `--dataset mini_case`.

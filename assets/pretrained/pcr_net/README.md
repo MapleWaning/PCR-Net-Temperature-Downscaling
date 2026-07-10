@@ -1,14 +1,30 @@
 # PCR-Net Pretrained Weights
 
-Full pretrained PCR-Net checkpoints are managed by GitHub Releases.
+PCR-Net checkpoints are managed by GitHub Releases instead of Git.
 
-Expected local layout after download:
+## Download
+
+```bash
+python scripts/download_release_artifact.py pcr_time
+python scripts/download_release_artifact.py pcr_spatial
+```
+
+The downloader verifies each checkpoint with the size and SHA256 values in
+`configs/artifacts/artifact_manifest.json`.
+
+## Expected Layout
 
 ```text
 assets/pretrained/pcr_net/
+  pcr-time-v0.1.0.pth
   pcr-time.pth
+  pcr-spatial-v0.1.0.pth
   pcr-spatial.pth
-  metadata.json
 ```
 
-Demo 03 selects `pcr-time.pth` for the temporal version and `pcr-spatial.pth` for the spatial version before falling back to a Demo 02 checkpoint.
+`pcr-time.pth` is the runtime alias for the temporal-generalization checkpoint.
+`pcr-spatial.pth` is the runtime alias for the spatial leave-out checkpoint.
+
+Demo 3 selects the matching alias for `--version time`, `--version temporal`,
+or `--version spatial`. If a checkpoint is missing and no `--model-path` is
+provided, the demo attempts to download it automatically.

@@ -31,6 +31,7 @@ assets/demo_data/*
 
 # Keep directory placeholders and local documentation.
 !**/.gitkeep
+!outputs/README.md
 !assets/pretrained/pcr_net/README.md
 !assets/demo_data/README.md
 !assets/demo_data/smoke_case/

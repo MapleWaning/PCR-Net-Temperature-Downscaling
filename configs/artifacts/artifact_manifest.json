@@ -5,7 +5,7 @@
     "tag": "v0.1.0-demo",
     "page_url": "https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.1.0-demo",
     "url_template": "https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/download/{tag}/{asset_name}",
-    "note": "Pre-release artifacts for testing the PCR-Net repository workflows. Replace this tag with the official release tag when v1.0.0 is published."
+    "note": "Pre-release artifacts for testing the PCR-Net repository workflows. Replace this tag with the official paper-associated release tag after the repository contents are finalized."
   },
   "artifacts": {
     "demo_data": {
