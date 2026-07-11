@@ -4,7 +4,7 @@ PCR-Net is a physics-corrected and knowledge-distilled workflow for downscaling 
 
 ## Repository Status
 
-This repository currently uses the GitHub pre-release `v0.1.0-demo` for testing repository functionality, artifact download, pretrained checkpoints, and the documentation workflow. The current pre-release page is [v0.1.0-demo](https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.1.0-demo). Artifact names or documentation details may change before the official paper-associated release. The final stable release tag has not been determined.
+The current public version is the stable submission snapshot [v0.9.0](https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.9.0). This release is intended for manuscript submission and public review. It is not yet the final paper-associated software release, and no specific future release tag has been predetermined.
 
 ## Main Capabilities
 

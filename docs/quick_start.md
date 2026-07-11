@@ -20,6 +20,11 @@ See [installation.md](installation.md) if your platform needs a custom PyTorch o
 
 ## 3. Download Public Artifacts
 
+The current public version is the stable submission snapshot
+[`v0.9.0`](https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.9.0).
+The commands below read the active release and asset metadata from the artifact
+manifest.
+
 ```bash
 python scripts/download_release_artifact.py mini_case
 python scripts/download_release_artifact.py pcr_time

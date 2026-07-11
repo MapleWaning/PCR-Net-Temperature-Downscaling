@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "release": {
-    "status": "published_prerelease",
-    "tag": "v0.1.0-demo",
-    "page_url": "https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.1.0-demo",
-    "url_template": "https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/download/{tag}/{asset_name}",
-    "note": "Pre-release artifacts for testing the PCR-Net repository workflows. Replace this tag with the official paper-associated release tag after the repository contents are finalized."
+    "status": "published_stable",
+    "tag": "v0.9.0",
+    "page_url": "https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.9.0",
+    "url_template": "https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/download/v0.9.0/{asset_name}",
+    "note": "Stable public submission snapshot intended for manuscript submission and public review. It is not yet the final paper-associated software release. The reattached assets retain their v0.1.0 filenames because their contents and checksums are unchanged from the earlier demo release."
   },
   "artifacts": {
     "demo_data": {

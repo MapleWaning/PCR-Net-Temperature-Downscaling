@@ -32,6 +32,19 @@ PCR-Net uses `ResAttUNet` with:
 - spatial feature transform (SFT);
 - a hybrid refinement loss with gradient-guidance terms during training.
 
+The hybrid refinement loss exposes two tunable parameters in the public training
+entrypoint:
+
+- `--lambda-grad` controls the weight of the CatBoost teacher-guidance gradient
+  loss term.
+- `--alpha-terrain` controls the terrain-weighted station supervision term based
+  on the DEM slope channel.
+
+The current repository defaults are `LAMBDA_GRAD = 0.1` and
+`ALPHA_TERRAIN = 0.1` in `config.py`. These values are included to demonstrate
+that both parameters are part of the training interface; they are not claimed to
+be optimal settings.
+
 The neural input has 20 channels:
 
 ```text

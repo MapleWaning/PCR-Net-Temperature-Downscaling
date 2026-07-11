@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software repository, please cite it using the metadata in this file."
 title: "PCR-Net: Physics-Corrected and Knowledge-Distilled Air Temperature Downscaling"
 type: software
-version: "0.1.0"
-date-released: "2026-07-10"
+version: "0.9.0"
+date-released: "2026-07-11"
 license: MIT
 url: "https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling"
 repository-code: "https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling"

@@ -284,8 +284,12 @@ def visualize_sample(dataset, model, sample_idx, sample_number, output_dir, devi
             bbox={"boxstyle": "round,pad=0.3", "facecolor": "white", "alpha": 0.7},
         )
 
-    fig.suptitle(f"{label} refinement | Station: {station_id} | Date: {date_string} | Sample: {sample_idx}", fontsize=16)
-    fig.tight_layout()
+    fig.suptitle(
+        f"{label} refinement | Station: {station_id} | Date: {date_string} | Sample: {sample_idx}",
+        fontsize=16,
+        y=0.98,
+    )
+    fig.tight_layout(rect=(0, 0, 1, 0.82), pad=1.2)
     output_path = output_dir / make_output_name(label, sample_number, sample_idx, station_id, date_string)
     fig.savefig(output_path, dpi=dpi, bbox_inches="tight")
     plt.close(fig)

@@ -49,4 +49,5 @@ python scripts/download_release_artifact.py pcr_spatial
 ```
 
 These checkpoints are for public workflow validation and pretrained demo
-inference. The official paper-associated release may update artifact metadata.
+inference. They are distributed with the stable submission snapshot
+[`v0.9.0`](https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.9.0).

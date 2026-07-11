@@ -6,7 +6,7 @@ Symptom: the downloader cannot reach GitHub or times out.
 
 Likely cause: network access, proxy settings, or regional restrictions.
 
-Solution: retry with a working network, download the exact Release asset manually, place it at the manifest `download_path`, and rerun the downloader for verification/installation.
+Solution: retry with a working network, download the exact asset from the [v0.9.0 release page](https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.9.0), place it at the manifest `download_path`, and rerun the downloader for verification/installation.
 
 ## SHA256 Mismatch
 

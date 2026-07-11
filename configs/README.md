@@ -41,9 +41,10 @@ python scripts/download_release_artifact.py pcr_spatial
 python scripts/download_release_artifact.py all
 ```
 
-The current manifest points to the `v0.1.0-demo` pre-release. It is intended
-for testing repository workflows, data downloads, model weights, and
-documentation flow before a future stable paper-associated release.
+The current manifest points to the stable submission snapshot
+[`v0.9.0`](https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.9.0).
+This release is intended for manuscript submission and public review. It is not
+yet the final paper-associated software release.
 
 ## Editing Guidance
 

@@ -20,7 +20,30 @@ The repository provides six public demos. Run commands from the repository root.
 5. Demo 5 compares baseline methods.
 6. Demo 6 profiles model compute.
 
-Demo 2 may use the prebuilt `mini_case` dataset even though Demo 1 writes a compatible model-ready fallback layout.
+## Using Demo 1 Output in Later Demos
+
+Demo 1 writes a compatible model-ready dataset at:
+
+```text
+outputs/demos/01_data_fetch/model_ready/
+```
+
+This generated dataset can be selected as the input dataset for every later
+demo (Demos 2-6) by passing the shared data-root override:
+
+```bash
+python examples/<demo-directory>/run_demo.py --data-root outputs/demos/01_data_fetch/model_ready
+```
+
+Run the command from the repository root and replace `<demo-directory>` with
+the directory for the demo being executed. Demos 2-5 may also receive their
+normal split or version options. Demo 6 uses the same `--data-root` override
+without temporal or spatial selection.
+
+Demo 1 provides model-ready inputs but does not generate CatBoost teacher maps
+or trained PCR-Net checkpoints. Run Demo 2 on the same data root before Demo 3
+or any guidance-dependent Demo 4 variant when those artifacts are not already
+available.
 
 ## Shared Dataset Options
 
@@ -34,3 +57,4 @@ Demos 2-5 use:
 ```
 
 Demo 6 is sample-level and does not use temporal/spatial version selection.
+It accepts the same `--data-root <prepared-data-root>` override.

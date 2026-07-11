@@ -42,6 +42,28 @@ python examples/02_train_and_test/run_demo.py --dataset mini_case
 - `--split-mode temporal|spatial`
 - `--smoke-only`
 
+## PCR-Net Loss Parameters
+
+Demo 2 trains PCR-Net through `src/open_source/PCR-Net/train.py`. The underlying
+PCR-Net training entrypoint includes two tunable loss parameters:
+
+- `--lambda-grad`: weight for the CatBoost teacher-guidance gradient loss term.
+- `--alpha-terrain`: weight used to amplify station supervision in complex
+  terrain based on the DEM slope channel.
+
+The repository defaults are currently:
+
+```text
+LAMBDA_GRAD = 0.1
+ALPHA_TERRAIN = 0.1
+```
+
+These values are demo/default settings that show the two parameters exist in
+the public training code. They should not be interpreted as optimal values or as
+the final manuscript hyperparameter setting. The Demo 2 wrapper uses these
+defaults unless the lower-level PCR-Net training command is run with explicit
+overrides.
+
 ## Processing Steps
 
 The demo writes features, CatBoost models, teacher maps, PCR-Net runs, metrics, and a summary under:

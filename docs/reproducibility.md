@@ -31,6 +31,7 @@ Purpose:
 
 Typical data:
 
+- Stable submission snapshot [`v0.9.0`](https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.9.0).
 - `assets/demo_data/mini_case/`.
 - `assets/pretrained/pcr_net/pcr-time.pth`.
 - `assets/pretrained/pcr_net/pcr-spatial.pth`.

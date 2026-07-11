@@ -35,11 +35,17 @@ The HDF5 files keep full year-length day axes for compatibility. Only selected d
 | `pcr_time` | `pcr-time-v0.1.0.pth` | Temporal-generalization PCR-Net checkpoint | 105443235 bytes | `781eae46b207a9439a971e47c069bf7809bbe411a2b42b5c4cb5c6fca56c92fc` | `assets/pretrained/pcr_net/pcr-time.pth` |
 | `pcr_spatial` | `pcr-spatial-v0.1.0.pth` | Spatial leave-out PCR-Net checkpoint | 105443235 bytes | `2b94ae043e1c110d2d44e95711a48ac17eec0a38565454a231212cffe8c1ada7` | `assets/pretrained/pcr_net/pcr-spatial.pth` |
 
-Current Release tag: `v0.1.0-demo`.
+Current Release tag: `v0.9.0`.
 
-Release page: [v0.1.0-demo](https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.1.0-demo).
+Release page: [PCR-Net submission snapshot v0.9.0](https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.9.0).
 
-The GitHub API reports the pre-release publication timestamp as `2026-07-10T02:27:34Z`.
+The GitHub API reports the stable release publication timestamp as `2026-07-11T03:17:20Z`. The current public version is the stable submission snapshot v0.9.0. This release is intended for manuscript submission and public review. It is not yet the final paper-associated software release.
+
+The release assets retain the `v0.1.0` filename suffix because their contents
+have not changed since the earlier demo release. They are reattached to
+`v0.9.0` so that the submission snapshot is self-contained. Their artifact
+versions, sizes, SHA256 checksums, installed paths, and runtime aliases remain
+unchanged.
 
 ## Download Commands
 

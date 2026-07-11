@@ -59,6 +59,12 @@ physical base (3) + DEM/topography (4) + albedo (1) + time features (2) + land-u
 
 PCR-Net training additionally consumes CatBoost teacher guidance maps for the guided loss. Baseline U-Net training does not use guidance maps.
 
+The guided PCR-Net loss exposes `--lambda-grad` for the CatBoost
+teacher-guidance gradient term and `--alpha-terrain` for terrain-weighted station
+supervision. Current repository defaults are `0.1` for both parameters. These
+defaults demonstrate the public interface and are not presented as optimal
+hyperparameters.
+
 ## Evaluation
 
 The shared neural evaluator reports RMSE, MAE, MBE, and R2 over valid pixels after converting normalized predictions and targets back to Celsius.

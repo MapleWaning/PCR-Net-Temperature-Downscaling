@@ -22,6 +22,8 @@ Install the Release-managed mini-case with:
 python scripts/download_release_artifact.py mini_case
 ```
 
+The active artifact release is the stable submission snapshot
+[`v0.9.0`](https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.9.0).
 The downloader verifies size and SHA256 values from
 `configs/artifacts/artifact_manifest.json`.
 

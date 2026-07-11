@@ -52,6 +52,19 @@ Some checked-in example configs contain local absolute paths from development. T
 | `years.*` | Reduced demo year settings. |
 | `training.*` | Reduced demo training parameters. |
 
+## PCR-Net Training Loss Parameters
+
+The lower-level PCR-Net training entrypoint also reads defaults from `config.py`:
+
+| CLI option | Default symbol | Current value | Meaning |
+|---|---|---:|---|
+| `--lambda-grad` | `LAMBDA_GRAD` | `0.1` | Weight for the CatBoost teacher-guidance gradient loss term. |
+| `--alpha-terrain` | `ALPHA_TERRAIN` | `0.1` | Weight for terrain-amplified station supervision based on DEM slope. |
+
+These values are repository demo/default values. They document the existence of
+the two adjustable parameters and should not be treated as optimized or final
+paper-associated hyperparameters.
+
 ## `configs/artifacts/artifact_manifest.json`
 
 Defines Release tag, asset names, sizes, SHA256 hashes, download paths, and installed runtime paths. The downloader script reads this manifest directly.

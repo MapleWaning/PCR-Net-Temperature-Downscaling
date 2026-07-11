@@ -31,6 +31,14 @@ python -m pip install -r requirements.txt
 
 The pip route is convenient for model-only demos. Geospatial packages such as GDAL and rasterio may require platform-specific wheels or Conda packages.
 
+## Release Artifacts
+
+Release-managed demo data and pretrained checkpoints are distributed with the
+stable submission snapshot
+[`v0.9.0`](https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.9.0).
+After installing the environment, follow [quick_start.md](quick_start.md) for
+the artifact download commands.
+
 ## Verify the Environment
 
 Run:

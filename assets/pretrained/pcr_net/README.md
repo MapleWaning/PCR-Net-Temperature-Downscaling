@@ -9,6 +9,8 @@ python scripts/download_release_artifact.py pcr_time
 python scripts/download_release_artifact.py pcr_spatial
 ```
 
+The active checkpoint release is the stable submission snapshot
+[`v0.9.0`](https://github.com/MapleWaning/PCR-Net-Temperature-Downscaling/releases/tag/v0.9.0).
 The downloader verifies each checkpoint with the size and SHA256 values in
 `configs/artifacts/artifact_manifest.json`.
 
